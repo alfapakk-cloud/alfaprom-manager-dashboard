@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АЛЬФАПРОМ — Рабочий стол менеджера</title>
+<style>
+:root{--orange:#ff8100;--bg:#f6f7f9;--card:#fff;--text:#20242a;--muted:#747b84;--line:#e6e8eb;--shadow:0 8px 28px rgba(24,31,39,.07);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}.header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-inner{max-width:1280px;margin:auto;padding:14px 24px;display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;min-width:250px}.logo{width:42px;height:42px;border-radius:12px;background:var(--orange);display:grid;place-items:center;color:#fff;font-weight:900;font-size:20px}
+.brand-title{font-weight:800;font-size:16px}.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.search{flex:1;position:relative;max-width:520px}.search input{width:100%;height:42px;border:1px solid var(--line);border-radius:12px;background:#f7f8fa;padding:0 16px 0 42px;outline:none}
+.search input:focus{border-color:#ffc080;background:#fff;box-shadow:0 0 0 4px rgba(255,129,0,.08)}.search-icon{position:absolute;left:14px;top:11px;color:#8a9199}
+.toplinks{display:flex;gap:8px;margin-left:auto}.toplinks a{padding:9px 12px;border-radius:10px;font-size:13px;font-weight:700;background:#f7f8fa}.toplinks a:hover{background:#fff0e2;color:#e86f00}
+main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30px}.hero h1{font-size:30px;line-height:1.1;margin:0 0 7px}.hero p{margin:0;color:var(--muted)}
+.section{margin-top:34px}.section-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;font-size:19px;font-weight:850}.section-title:after{content:"";height:1px;background:var(--line);flex:1;margin-left:8px}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:.18s ease}
+.card:hover{transform:translateY(-2px);border-color:#ffd2a8;box-shadow:0 12px 34px rgba(24,31,39,.10)}.quick .card{min-height:150px;padding:22px}.quick .icon{width:46px;height:46px;border-radius:13px;background:#fff0e2;display:grid;place-items:center;font-size:23px;margin-bottom:18px}.quick h3{margin:0 0 6px;font-size:17px}.quick p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.quick a{display:block;height:100%}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.panel{padding:21px}.panel h3{margin:0 0 15px;font-size:16px}.links{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.link{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:11px;background:#f7f8fa;font-size:13px;font-weight:650;border:1px solid transparent}.link:hover{background:#fff4ea;border-color:#ffd9b7;color:#e86f00}.link .ico{width:23px;text-align:center;font-size:17px;flex:none}
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.client{padding:17px;background:#fff;border:1px solid var(--line);border-radius:14px;text-align:center;font-weight:750;font-size:13px;box-shadow:var(--shadow)}.client .big{font-size:25px;margin-bottom:9px}.client:hover{border-color:#ffc27f;background:#fffaf5}
+.suppliers{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.supplier{padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:13px;font-weight:650}.supplier:hover{border-color:#ffc27f;background:#fffaf5}
+.hidden{display:none!important}.empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:16px}.footer{text-align:center;color:#9299a1;font-size:12px;padding:24px 0 4px}.badge{display:inline-block;margin-left:7px;padding:3px 7px;border-radius:20px;background:#fff0e2;color:#e86f00;font-size:10px;font-weight:800}
+@media(max-width:980px){.quick{grid-template-columns:repeat(2,1fr)}.suppliers{grid-template-columns:repeat(3,1fr)}.client-grid{grid-template-columns:repeat(2,1fr)}.brand{min-width:auto}.toplinks{display:none}}
+@media(max-width:680px){.header-inner{padding:12px 15px;flex-wrap:wrap}.brand{width:100%}.search{max-width:none;width:100%}main{padding:25px 15px 45px}.quick,.grid{grid-template-columns:1fr}.links{grid-template-columns:1fr}.suppliers{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a class="brand" href="#"><div class="logo">А</div><div><div class="brand-title">АЛЬФАПРОМ</div><div class="brand-sub">Рабочий стол менеджера</div></div></a>
+<div class="search"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Что нужно найти? Например: доверенность, Henkelman, сервис"></div>
+<div class="toplinks"><a href="https://alfaprom.amocrm.ru/" target="_blank" rel="noopener">amoCRM</a><a href="https://t.me/alfaprompro" target="_blank" rel="noopener">Telegram</a><a href="tel:+78002002923">☎ Контакты</a></div>
+</div></header>
+
+<main>
+<div class="hero"><h1>Рабочий стол менеджера</h1><p>Всё необходимое для работы с клиентом — оборудование, КП, сервис, отгрузка и материалы.</p></div>
+
+<section class="section"><div class="section-title">⚡ Основные инструменты</div><div class="quick searchable">
+<a class="card" href="https://alfapakk-cloud.github.io/alfaprom-equipment-search/" target="_blank" rel="noopener" data-search="найти оборудование поставщика оборудование поиск поставщик"><div class="icon">🔎</div><h3>Найти оборудование и поставщика</h3><p>Подбор оборудования, поставщика и подходящего решения.</p></a>
+<a class="card" href="https://alfapakk-cloud.github.io/alfaprom-kp-editor/" target="_blank" rel="noopener" data-search="сделать КП коммерческое предложение генератор КП"><div class="icon">📄</div><h3>Быстро сделать КП</h3><p>Создать коммерческое предложение для клиента.</p></a>
+<a class="card" href="https://alfapakk-cloud.github.io/alfaprom-expert-knowledge/" target="_blank" rel="noopener" data-search="ответ эксперта база знаний технолог оборудование"><div class="icon">🤖</div><h3>Получить ответ эксперта</h3><p>Проверенные ответы по оборудованию и технологиям.</p></a>
+<a class="card" href="https://alfaprom-video-downloader.onrender.com" target="_blank" rel="noopener" data-search="скачать видео скачать видео ссылка"><div class="icon">🎥</div><h3>Скачать видео</h3><p>Быстро скачать видео по ссылке.</p></a>
+</div></section>
+
+<section class="section grid">
+<div class="card panel searchable" data-search="сделка клиент общение скрипты красные флаги калькулятор опрос КП счет"><h3>💼 Сделка</h3><div class="links">
+<a class="link" href="#" data-placeholder="Памятка по общению"><span class="ico">📞</span>Памятка по общению</a>
+<a class="link" href="#" data-placeholder="Скрипты"><span class="ico">💬</span>Скрипты</a>
+<a class="link" href="#" data-placeholder="Красные флаги"><span class="ico">🚩</span>Красные флаги</a>
+<a class="link" href="https://docs.google.com/spreadsheets/u/0/d/1aqmRZPO1EFAwA_KTz0MTqhFZGIOii3v5a7vFLZBQf4k/edit" target="_blank" rel="noopener"><span class="ico">🧮</span>Калькулятор сделки</a>
+<a class="link" href="https://drive.google.com/drive/folders/1aBiQ3LfF6KEOUPyxE_F8DBA2L-JGoIaO?usp=sharing" target="_blank" rel="noopener"><span class="ico">📋</span>Опросные листы</a>
+<a class="link" href="https://alfaprom.org/alfavhod/" target="_blank" rel="noopener"><span class="ico">📄</span>Генератор КП <span class="badge">ЛК</span></a>
+</div></div>
+
+<div class="card panel searchable" data-search="оборудование поставщики склады карта обучение товары"><h3>📦 Оборудование</h3><div class="links">
+<a class="link" href="https://alfapakk-cloud.github.io/alfaprom-equipment-search/" target="_blank" rel="noopener"><span class="ico">🔎</span>Поиск оборудования</a>
+<a class="link" href="#suppliers"><span class="ico">🏭</span>Поставщики АЛЬФАПРОМ</a>
+<a class="link" href="https://yandex.ru/maps/?um=constructor%3Ab9ea6bef0f1ba04a8f0add05ff18f41f30d0e1993c0095f758ea026b1f040913&source=constructorLink" target="_blank" rel="noopener"><span class="ico">🗺️</span>Склады поставщиков</a>
+<a class="link" href="https://yandex.ru/maps/?um=constructor%3Ae44247b0a8544586138adf6e8142aafe2c9bcb06d66502814d90e999d49c2b2a&source=constructorLink" target="_blank" rel="noopener"><span class="ico">🗺️</span>Склады поставщиков 2</a>
+<a class="link" href="#" data-placeholder="Обучающие материалы по товару"><span class="ico">📚</span>Обучение по товарам</a>
+<a class="link" href="#suppliers"><span class="ico">📱</span>Каналы поставщиков</a>
+</div></div>
+
+<div class="card panel searchable" data-search="отгрузка документы доверенность счет доставка"><h3>🚚 Отгрузка</h3><div class="links">
+<a class="link" href="#" data-placeholder="Документы для выставления счета"><span class="ico">📑</span>Документы для счёта</a>
+<a class="link" href="#" data-placeholder="Заявка на отгрузку"><span class="ico">📦</span>Заявка на отгрузку</a>
+<a class="link" href="#" data-placeholder="Доверенность для самовывоза"><span class="ico">👤</span>Доверенность для самовывоза</a>
+<a class="link" href="#" data-placeholder="Контроль отгрузок"><span class="ico">🚚</span>Контроль отгрузок</a>
+</div></div>
+
+<div class="card panel searchable" data-search="сервис ремонт рекламация сервисный центр договор акт"><h3>🔧 Сервис</h3><div class="links">
+<a class="link" href="https://t.me/+XpD4gc0t-mhjNDgy" target="_blank" rel="noopener"><span class="ico">🛠️</span>Заявка на ремонт в МСК</a>
+<a class="link" href="#" data-placeholder="Сервисные центры и частники"><span class="ico">📍</span>Сервисные центры и частники</a>
+<a class="link" href="#" data-placeholder="Договор сервисных работ"><span class="ico">📄</span>Договор сервисных работ</a>
+<a class="link" href="#" data-placeholder="Акт выполненных работ"><span class="ico">📋</span>Акт выполненных работ</a>
+<a class="link" href="#" data-placeholder="Акт рекламации"><span class="ico">⚠️</span>Акт рекламации</a>
+</div></div>
+</section>
+
+<section class="section grid">
+<div class="card panel searchable" data-search="показатели план факт отчет воронка заявки звонки минуты КП КЭВ счета оплаты маржа"><h3>📊 Мои показатели</h3><div class="links">
+<a class="link" href="#" data-placeholder="Ежедневный отчёт"><span class="ico">📝</span>Ежедневный отчёт</a>
+<a class="link" href="#" data-placeholder="План / факт"><span class="ico">📈</span>План / факт</a>
+<a class="link" href="#" data-placeholder="Воронка операционных показателей"><span class="ico">🎯</span>Воронка показателей</a>
+<a class="link" href="#" data-placeholder="Нормативы менеджера"><span class="ico">📊</span>Нормативы менеджера</a>
+</div></div>
+<div class="card panel searchable" data-search="обучение стажировка книги материалы развитие"><h3>📚 Обучение и база</h3><div class="links">
+<a class="link" href="#" data-placeholder="План стажировки"><span class="ico">🎓</span>План стажировки</a>
+<a class="link" href="#" data-placeholder="Что необходимо изучить"><span class="ico">📌</span>Что изучить</a>
+<a class="link" href="#" data-placeholder="Книги"><span class="ico">📖</span>Книги</a>
+<a class="link" href="#" data-placeholder="Обучающие материалы"><span class="ico">📚</span>Обучающие материалы</a>
+</div></div>
+</section>
+
+<section class="section"><div class="section-title">📣 Материалы для клиента</div><div class="client-grid searchable" data-search="презентация каталог отзывы видео сайт telegram youtube rutube VK яндекс карты">
+<a class="client" href="#" data-placeholder="Презентация и каталог"><div class="big">📘</div>Презентация и каталог</a>
+<a class="client" href="#reviews"><div class="big">⭐</div>Отзывы клиентов</a>
+<a class="client" href="https://rutube.ru/video/1b3b865076e8976b529a7c6a7e9b86fe/" target="_blank" rel="noopener"><div class="big">🎬</div>Видеоотзывы</a>
+<a class="client" href="https://yandex.ru/maps/org/alfaprom/122892393204/?from=tableau_yabro&ll=50.192963%2C53.224315&z=16.44" target="_blank" rel="noopener"><div class="big">📍</div>Яндекс.Карты</a>
+<a class="client" href="https://alfaprom.org/" target="_blank" rel="noopener"><div class="big">🌐</div>Сайт</a>
+<a class="client" href="https://t.me/alfaprompro" target="_blank" rel="noopener"><div class="big">📱</div>Telegram</a>
+<a class="client" href="https://www.youtube.com/channel/UC6ffXcwlBZnnLagSc6GQ19Q" target="_blank" rel="noopener"><div class="big">▶️</div>YouTube</a>
+<a class="client" href="https://rutube.ru/channel/44630583/" target="_blank" rel="noopener"><div class="big">▶️</div>Rutube</a>
+<a class="client" href="https://vk.com/alfaprom" target="_blank" rel="noopener"><div class="big">VK</div>ВКонтакте</a>
+</div></section>
+
+<section class="section" id="reviews"><div class="section-title">⭐ Видеоотзывы</div><div class="client-grid searchable" data-search="отзыв печь вакуумный упаковщик INDOKOR пельменный аппарат поршневой дозатор">
+<a class="client" href="https://rutube.ru/video/1b3b865076e8976b529a7c6a7e9b86fe/" target="_blank" rel="noopener"><div class="big">🔥</div>Отзыв — печь</a>
+<a class="client" href="https://rutube.ru/video/2007224016a37ae7be087b248ab7ebee/" target="_blank" rel="noopener"><div class="big">📦</div>Отзыв — INDOKOR</a>
+<a class="client" href="https://rutube.ru/video/96be3bd7601f41edcb097252c8f21c0f/" target="_blank" rel="noopener"><div class="big">📦</div>Отзыв — вакуумный упаковщик</a>
+<a class="client" href="https://rutube.ru/video/d2ccc21008c4182f7cb0eae5fd1a3ccc/" target="_blank" rel="noopener"><div class="big">🥟</div>Отзыв — пельменный аппарат</a>
+<a class="client" href="https://rutube.ru/video/5cb41979fc445ea8f987d9cb03bab50c/" target="_blank" rel="noopener"><div class="big">💧</div>Отзыв — поршневой дозатор</a>
+</div></section>
+
+<section class="section" id="suppliers"><div class="section-title">🏭 Поставщики АЛЬФАПРОМ</div><div class="suppliers searchable" data-search="поставщики МНПП Инициатива Пищевые технологии Экспо маркет Hualian Мясные технологии Севен Пак Русский Проект Агрозавод РОСТПИЩМАШ VASSILII Росхолод Практика КЛЕН Polair MealBox Henkelman Магикон Эльф 4М Смирновъ Эквип Станко Форком Гольфстрим Danler Тетраслав Henkovac Масса-К Абат Бронко Георг Полимер">
+<a class="supplier" href="https://initsiativa.su/" target="_blank" rel="noopener">МНПП Инициатива</a>
+<a class="supplier" href="https://zavod-pt.ru/" target="_blank" rel="noopener">Пищевые технологии</a>
+<a class="supplier" href="https://ekspomarket.ru/" target="_blank" rel="noopener">Экспо маркет</a>
+<a class="supplier" href="https://hmru.ru/" target="_blank" rel="noopener">Hualian Machinery</a>
+<a class="supplier" href="https://www.mt-torg.ru" target="_blank" rel="noopener">Мясные технологии</a>
+<a class="supplier" href="https://7pack.pro/" target="_blank" rel="noopener">Севен Пак</a>
+<a class="supplier" href="https://www.rp.ru/" target="_blank" rel="noopener">Русский Проект</a>
+<a class="supplier" href="https://xn--80aagchp2cdn.xn--p1ai/catalog/" target="_blank" rel="noopener">Агрозавод</a>
+<a class="supplier" href="https://xn--80apmgfeii2dh.xn--p1ai/catalog/" target="_blank" rel="noopener">РОСТПИЩМАШ</a>
+<a class="supplier" href="https://vassilii.ru/" target="_blank" rel="noopener">VASSILII</a>
+<a class="supplier" href="https://rosholod.org/" target="_blank" rel="noopener">Росхолод</a>
+<a class="supplier" href="http://pectopah.ru/" target="_blank" rel="noopener">Практика</a>
+<a class="supplier" href="http://www.klenmarket.ru" target="_blank" rel="noopener">КЛЕН</a>
+<a class="supplier" href="https://www.polair.com/" target="_blank" rel="noopener">Polair</a>
+<a class="supplier" href="https://mealbox.pro/" target="_blank" rel="noopener">MealBox</a>
+<a class="supplier" href="https://henkelmanrus.ru/" target="_blank" rel="noopener">Henkelman</a>
+<a class="supplier" href="http://www.magikon.ru/" target="_blank" rel="noopener">Магикон</a>
+<a class="supplier" href="https://www.elf4m.ru/" target="_blank" rel="noopener">Эльф 4М</a>
+<a class="supplier" href="https://www.smirnov.ooo/" target="_blank" rel="noopener">Смирновъ</a>
+<a class="supplier" href="https://equip.me/" target="_blank" rel="noopener">Эквип</a>
+<a class="supplier" href="https://stanko12.com/" target="_blank" rel="noopener">Станко</a>
+<a class="supplier" href="http://pkc-format.ru/" target="_blank" rel="noopener">Форком</a>
+<a class="supplier" href="http://www.golfstream.org/" target="_blank" rel="noopener">Гольфстрим</a>
+<a class="supplier" href="https://danler.pro/" target="_blank" rel="noopener">Danler</a>
+<a class="supplier" href="http://www.tetraslav.pro/" target="_blank" rel="noopener">Тетраслав</a>
+<a class="supplier" href="http://www.henkovac-russia.com/" target="_blank" rel="noopener">Henkovac</a>
+<a class="supplier" href="https://massa.ru/" target="_blank" rel="noopener">Масса-К</a>
+<a class="supplier" href="https://abat.ru/" target="_blank" rel="noopener">Абат</a>
+<a class="supplier" href="https://www.bronko.ru/" target="_blank" rel="noopener">Бронко</a>
+<a class="supplier" href="https://www.georgpolymer.ru/" target="_blank" rel="noopener">Георг Полимер</a>
+</div></section>
+
+<section class="section"><div class="card panel searchable" data-search="телеграм поставщики каналы Русский проект"><h3>📱 Telegram поставщиков</h3><div class="links">
+<a class="link" href="https://t.me/rp_ru" target="_blank" rel="noopener"><span class="ico">📢</span>Русский Проект</a>
+</div></div></section>
+
+<div id="empty" class="empty hidden">По вашему запросу ничего не найдено.</div>
+<div class="footer">АЛЬФАПРОМ • Рабочий стол менеджера • 8 (800) 200-29-23</div>
+</main>
+
+<script>
+const search=document.getElementById('search'),items=[...document.querySelectorAll('[data-search]')],empty=document.getElementById('empty');
+search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();let visible=0;items.forEach(el=>{const match=!q||(el.dataset.search||'').toLowerCase().includes(q);el.classList.toggle('hidden',!match);if(match)visible++});empty.classList.toggle('hidden',visible>0||!q)});
+document.querySelectorAll('[data-placeholder]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();alert('Ссылка на «'+el.dataset.placeholder+'» пока не была предоставлена в исходной памятке. Этот пункт оставлен для подключения документа.')}));
+</script>
+</body>
+</html>
