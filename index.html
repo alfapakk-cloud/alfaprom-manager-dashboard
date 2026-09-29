@@ -425,60 +425,61 @@ document.addEventListener('click', () => {
 });
 const dailyReportButton = document.getElementById('dailyReportButton');
 const reportDropdown = document.getElementById('reportDropdown');
-dailyReportButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (reportDropdown.classList.contains('open')) {
-        reportDropdown.classList.remove('open');
-        return;
-    }
-reportDropdown.addEventListener('click', function(e) {
-    e.stopPropagation();
-});
-document.addEventListener('click', function(e) {
-    if (
-        !reportDropdown.contains(e.target) &&
-        !dailyReportButton.contains(e.target)
-    ) {
-        reportDropdown.classList.remove('open');
-    }
-});
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        reportDropdown.classList.remove('open');
-    }
-});
+
+if (dailyReportButton && reportDropdown) {
+
+    dailyReportButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        reportDropdown.classList.toggle('open');
+    });
+
+    reportDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('click', function(e) {
+        if (
+            !reportDropdown.contains(e.target) &&
+            !dailyReportButton.contains(e.target)
+        ) {
+            reportDropdown.classList.remove('open');
+        }
+    });
+
+}
+
 
 const metricsFunnelButton =
     document.getElementById('metricsFunnelButton');
+
 const metricsFunnelDropdown =
     document.getElementById('metricsFunnelDropdown');
-metricsFunnelButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (metricsFunnelDropdown.classList.contains('open')) {
-        metricsFunnelDropdown.classList.remove('open');
-        return;
-    }
-metricsFunnelDropdown.addEventListener(
-    'click',
-    function(e) {
+
+if (metricsFunnelButton && metricsFunnelDropdown) {
+
+    metricsFunnelButton.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
-    }
-);
-document.addEventListener('click', function(e) {
-    if (
-        !metricsFunnelDropdown.contains(e.target) &&
-        !metricsFunnelButton.contains(e.target)
-    ) {
-        metricsFunnelDropdown.classList.remove('open');
-    }
-});
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        metricsFunnelDropdown.classList.remove('open');
-    }
-});
+
+        metricsFunnelDropdown.classList.toggle('open');
+    });
+
+    metricsFunnelDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('click', function(e) {
+        if (
+            !metricsFunnelDropdown.contains(e.target) &&
+            !metricsFunnelButton.contains(e.target)
+        ) {
+            metricsFunnelDropdown.classList.remove('open');
+        }
+    });
+
+}
 </script>
 </body>
 </html>
