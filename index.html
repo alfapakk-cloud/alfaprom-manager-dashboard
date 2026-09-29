@@ -26,6 +26,103 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 .hidden{display:none!important}.empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:16px}.footer{text-align:center;color:#9299a1;font-size:12px;padding:24px 0 4px}.badge{display:inline-block;margin-left:7px;padding:3px 7px;border-radius:20px;background:#fff0e2;color:#e86f00;font-size:10px;font-weight:800}
 @media(max-width:980px){.quick{grid-template-columns:repeat(2,1fr)}.suppliers{grid-template-columns:repeat(3,1fr)}.client-grid{grid-template-columns:repeat(2,1fr)}.brand{min-width:auto}.toplinks{display:none}}
 @media(max-width:680px){.header-inner{padding:12px 15px;flex-wrap:wrap}.brand{width:100%}.search{max-width:none;width:100%}main{padding:25px 15px 45px}.quick,.grid{grid-template-columns:1fr}.links{grid-template-columns:1fr}.suppliers{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:25px}}
+/* ===== КОНТАКТЫ ===== */
+.contacts-menu {position: relative;}
+.contacts-button {border: none;cursor: pointer;padding: 9px 12px;border-radius: 10px;font-size: 13px;font-weight: 700;background: #f7f8fa;color: inherit;font-family: inherit;transition: .18s ease;}
+.contacts-button:hover,
+.contacts-button.active {background: #fff0e2;color: #e86f00;}
+/* Выпадающий список */
+.contacts-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 430px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(24,31,39,.16);
+    padding: 8px;
+    display: none;
+    z-index: 100;
+}
+.contacts-dropdown.open {display: block;}
+
+/* Один контакт */
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 14px;
+    border-radius: 12px;
+    transition: .15s ease;
+}
+.contact-item:hover {
+    background: #f8f9fa;
+}
+.contact-info {
+    min-width: 0;
+}
+.contact-role {
+    color: #8b929a;
+    font-size: 11px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    text-transform: lowercase;
+}
+.contact-name {
+    color: #20242a;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* Иконки */
+.contact-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+.contact-actions a {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: #f7f8fa;
+    color: #555d66;
+    font-size: 17px;
+    font-weight: 600;
+    transition: .15s ease;
+}
+.contact-actions a:hover {
+    background: #fff0e2;
+    color: #e86f00;
+    transform: translateY(-1px);
+}
+.contact-item + .contact-item {
+    border-top: 1px solid #f0f1f2;
+}
+@media(max-width:680px) {
+    .contacts-dropdown {
+        position: fixed;
+        top: 70px;
+        left: 15px;
+        right: 15px;
+        width: auto;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+    }
+
+    .contact-item {
+        padding: 14px 10px;
+    }
+
+    .contact-name {
+        font-size: 15px;
+    }
+}
 </style>
 </head>
 <body>
@@ -237,6 +334,26 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 const search=document.getElementById('search'),items=[...document.querySelectorAll('[data-search]')],empty=document.getElementById('empty');
 search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();let visible=0;items.forEach(el=>{const match=!q||(el.dataset.search||'').toLowerCase().includes(q);el.classList.toggle('hidden',!match);if(match)visible++});empty.classList.toggle('hidden',visible>0||!q)});
 document.querySelectorAll('[data-placeholder]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();alert('Ссылка на «'+el.dataset.placeholder+'» пока не была предоставлена в исходной памятке. Этот пункт оставлен для подключения документа.')}));
+
+const contactsButton = document.getElementById('contactsButton');
+const contactsDropdown = document.getElementById('contactsDropdown');
+
+contactsButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    contactsDropdown.classList.toggle('open');
+    contactsButton.classList.toggle('active');
+});
+
+contactsDropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+document.addEventListener('click', () => {
+    contactsDropdown.classList.remove('open');
+    contactsButton.classList.remove('active');
+});
+
 </script>
 </body>
 </html>
