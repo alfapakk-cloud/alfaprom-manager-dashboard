@@ -123,6 +123,91 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
         font-size: 15px;
     }
 }
+
+/* ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ ===== */
+.report-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(32, 36, 42, .12);
+    z-index: 200;
+    display: none;
+}
+.report-overlay.open {
+    display: block;
+}
+.report-dropdown {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 520px;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(24,31,39,.16);
+
+    padding: 22px 24px;
+}
+.report-description {
+    color: #8b929a;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 20px;
+    max-width: 430px;
+}
+.report-text {
+    color: #20242a;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.report-line {
+    margin-bottom: 8px;
+}
+.report-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+.report-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+.report-line:last-child {
+    margin-bottom: 0;
+}
+@media(max-width:680px) {
+
+    .report-dropdown {
+        top: 70px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - 90px);
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .report-description {
+        font-size: 11px;
+        margin-bottom: 18px;
+    }
+
+    .report-text {
+        font-size: 14px;
+    }
+
+    .report-name {
+        font-size: 17px;
+    }
+}
 </style>
 </head>
 <body>
@@ -159,9 +244,9 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
             </div>
 
             <div class="contact-actions">
-                <a href="tel:+7XXXXXXXXXX" title="Позвонить">☎</a>
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener" title="Telegram">✈</a>
-                <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" title="WhatsApp">◉</a>
+                <a href="tel:+79297050018" title="Позвонить">☎</a>
+                <a href="https://t.me/Tipo_Ann" target="_blank" rel="noopener" title="Telegram">✈</a>
+                <a href="https://wa.me/79297050018" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
 
@@ -173,9 +258,9 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
             </div>
 
             <div class="contact-actions">
-                <a href="tel:+7XXXXXXXXXX" title="Позвонить">☎</a>
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener" title="Telegram">✈</a>
-                <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" title="WhatsApp">◉</a>
+                <a href="tel:+79277283862" title="Позвонить">☎</a>
+                <a href="https://t.me/SKnyazevaa" target="_blank" rel="noopener" title="Telegram">✈</a>
+                <a href="https://wa.me/79277283862" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
 
@@ -187,9 +272,9 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
             </div>
 
             <div class="contact-actions">
-                <a href="tel:+7XXXXXXXXXX" title="Позвонить">☎</a>
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener" title="Telegram">✈</a>
-                <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" title="WhatsApp">◉</a>
+                <a href="tel:+79277685948" title="Позвонить">☎</a>
+                <a href="https://t.me/zabota_alfaprom" target="_blank" rel="noopener" title="Telegram">✈</a>
+                <a href="https://wa.me/79277685948" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
 
@@ -201,9 +286,9 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
             </div>
 
             <div class="contact-actions">
-                <a href="tel:+7XXXXXXXXXX" title="Позвонить">☎</a>
-                <a href="https://t.me/USERNAME" target="_blank" rel="noopener" title="Telegram">✈</a>
-                <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" title="WhatsApp">◉</a>
+                <a href="tel:+79276024402" title="Позвонить">☎</a>
+                <a href="https://t.me/GalinaHinoverova" target="_blank" rel="noopener" title="Telegram">✈</a>
+                <a href="https://wa.me/79276024402" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
 
@@ -256,10 +341,76 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 
 <section class="section grid">
 <div class="card panel searchable" data-search="показатели план факт отчет воронка заявки звонки минуты КП КЭВ счета оплаты маржа"><h3>📊 Мои показатели</h3><div class="links">
-<a class="link" href="#" data-placeholder="Ежедневный отчёт"><span class="ico">📝</span>Ежедневный отчёт</a>
+<a class="link" href="#" id="dailyReportButton">
+    <span class="ico">📝</span>Ежедневный отчёт (шаблон)
+</a>
+
+<!-- Окно ежедневного отчёта -->
+<div class="report-overlay" id="reportOverlay">
+    <div class="report-dropdown" id="reportDropdown">
+
+        <div class="report-description">
+            Шаблон отчёта (отправляем каждый день до 17:30 в чат
+            в Telegram «АЛЬФАПРОМ ОБЩИЙ NEW»)
+        </div>
+
+        <div class="report-text">
+
+            <div class="report-line report-name">
+                Менеджер: Фамилия Имя
+            </div>
+
+            <div class="report-line report-title">
+                Деньги (Факт/План)
+            </div>
+
+            <div class="report-line">
+                За месяц: ______/120000р
+            </div>
+
+            <div class="report-line">
+                Процент выполнения плана: %
+            </div>
+
+            <div class="report-line">
+                Кол-во целевых заявок: _/2
+            </div>
+
+            <div class="report-line">
+                Кол-во звонков: _/20
+            </div>
+
+            <div class="report-line">
+                Кол-во минут: _/40
+            </div>
+
+            <div class="report-line">
+                КП: _/5
+            </div>
+
+            <div class="report-line">
+                КЭВ: _/3
+            </div>
+
+            <div class="report-line">
+                Счетов за сегодня: _/1
+            </div>
+
+            <div class="report-line">
+                Оплат за сегодня: _/0,5
+            </div>
+
+            <div class="report-line">
+                Маржа за сегодня: _____/23 000р.
+            </div>
+
+        </div>
+
+    </div>
+</div>
 <a class="link" href="#" data-placeholder="План / факт"><span class="ico">📈</span>План / факт</a>
 <a class="link" href="#" data-placeholder="Воронка операционных показателей"><span class="ico">🎯</span>Воронка показателей</a>
-<a class="link" href="#" data-placeholder="Нормативы менеджера"><span class="ico">📊</span>Нормативы менеджера</a>
+<a class="link" href="https://apisareva22-droid.github.io/alfaprom-dashboard/" target="_blank" rel="noopener"><span class="ico">📊</span>Рейтинг менеджеров</a>
 </div></div>
 <div class="card panel searchable" data-search="обучение стажировка книги материалы развитие"><h3>📚 Обучение и база</h3><div class="links">
 <a class="link" href="#" data-placeholder="План стажировки"><span class="ico">🎓</span>План стажировки</a>
@@ -354,6 +505,36 @@ document.addEventListener('click', () => {
     contactsButton.classList.remove('active');
 });
 
+    // ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ =====
+
+const dailyReportButton = document.getElementById('dailyReportButton');
+const reportOverlay = document.getElementById('reportOverlay');
+const reportDropdown = document.getElementById('reportDropdown');
+
+// Открытие отчёта
+dailyReportButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    reportOverlay.classList.add('open');
+});
+
+// Клик внутри окна не закрывает его
+reportDropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Клик вне окна закрывает его
+reportOverlay.addEventListener('click', () => {
+    reportOverlay.classList.remove('open');
+});
+
+// Закрытие по Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        reportOverlay.classList.remove('open');
+    }
+});
 </script>
 </body>
 </html>
