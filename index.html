@@ -124,74 +124,141 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
     }
 }
 
-/* ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ ===== */
-.report-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(32, 36, 42, .12);
-    z-index: 200;
-    display: none;
-}
-.report-overlay.open {
-    display: block;
-}
+/* =====================================================
+   ЕЖЕДНЕВНЫЙ ОТЧЁТ
+   ===================================================== */
+
 .report-dropdown {
-    position: absolute;
-    top: 72px;
-    left: 50%;
-    transform: translateX(-50%);
-    
-    width: 520px;
+    position: fixed;
+
+    /*
+       Изначально скрыт.
+       Координаты будут заданы JavaScript
+       относительно кнопки.
+    */
+    top: 0;
+    left: 0;
+
+    width: 500px;
     max-width: calc(100vw - 30px);
-    max-height: calc(100vh - 100px);
+
+    max-height: calc(100vh - 30px);
     overflow-y: auto;
 
     background: #fff;
+
     border: 1px solid var(--line);
     border-radius: 16px;
-    box-shadow: 0 14px 40px rgba(24,31,39,.16);
+
+    box-shadow:
+        0 14px 40px rgba(24,31,39,.16);
 
     padding: 22px 24px;
+
+    z-index: 1000;
+
+    /*
+       Скрываем без display:none,
+       чтобы не было скачков при появлении.
+    */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-4px);
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease,
+        visibility .15s ease;
 }
+
+
+/* Открытое состояние */
+
+.report-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* Маленькое серое объяснение */
+
 .report-description {
     color: #8b929a;
+
     font-size: 11px;
     line-height: 1.45;
+
     margin-bottom: 20px;
+
     max-width: 430px;
 }
+
+
+/* Основной текст */
+
 .report-text {
     color: #20242a;
+
     font-size: 15px;
     line-height: 1.5;
 }
+
+
+/* Строки */
+
 .report-line {
     margin-bottom: 8px;
 }
+
+
+/* Менеджер */
+
 .report-name {
     font-size: 18px;
     font-weight: 700;
+
     margin-bottom: 18px;
 }
+
+
+/* Деньги */
+
 .report-title {
     font-size: 16px;
     font-weight: 700;
+
     margin-bottom: 7px;
 }
+
+
+/* Последняя строка */
+
 .report-line:last-child {
     margin-bottom: 0;
 }
+
+
+/* =====================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ===================================================== */
+
 @media(max-width:680px) {
 
     .report-dropdown {
-        top: 70px;
-        left: 15px;
-        right: 15px;
-        transform: none;
+
         width: auto;
-        max-width: none;
-        max-height: calc(100vh - 90px);
+
+        max-width: calc(100vw - 30px);
+
+        max-height: calc(100vh - 30px);
+
         padding: 20px;
+
         border-radius: 15px;
     }
 
@@ -341,73 +408,8 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 
 <section class="section grid">
 <div class="card panel searchable" data-search="показатели план факт отчет воронка заявки звонки минуты КП КЭВ счета оплаты маржа"><h3>📊 Мои показатели</h3><div class="links">
-<a class="link" href="#" id="dailyReportButton">
-    <span class="ico">📝</span>Ежедневный отчёт (шаблон)
-</a>
-
-<!-- Окно ежедневного отчёта -->
-<div class="report-overlay" id="reportOverlay">
-    <div class="report-dropdown" id="reportDropdown">
-
-        <div class="report-description">
-            Шаблон отчёта (отправляем каждый день до 17:30 в чат
-            в Telegram «АЛЬФАПРОМ ОБЩИЙ NEW»)
-        </div>
-
-        <div class="report-text">
-
-            <div class="report-line report-name">
-                Менеджер: Фамилия Имя
-            </div>
-
-            <div class="report-line report-title">
-                Деньги (Факт/План)
-            </div>
-
-            <div class="report-line">
-                За месяц: ______/120000р
-            </div>
-
-            <div class="report-line">
-                Процент выполнения плана: %
-            </div>
-
-            <div class="report-line">
-                Кол-во целевых заявок: _/2
-            </div>
-
-            <div class="report-line">
-                Кол-во звонков: _/20
-            </div>
-
-            <div class="report-line">
-                Кол-во минут: _/40
-            </div>
-
-            <div class="report-line">
-                КП: _/5
-            </div>
-
-            <div class="report-line">
-                КЭВ: _/3
-            </div>
-
-            <div class="report-line">
-                Счетов за сегодня: _/1
-            </div>
-
-            <div class="report-line">
-                Оплат за сегодня: _/0,5
-            </div>
-
-            <div class="report-line">
-                Маржа за сегодня: _____/23 000р.
-            </div>
-
-        </div>
-
-    </div>
-</div>
+<a class="link" href="#" id="dailyReportButton"><span class="ico">📝</span>Ежедневный отчёт (шаблон)
+</a></div>
 <a class="link" href="#" data-placeholder="План / факт"><span class="ico">📈</span>План / факт</a>
 <a class="link" href="#" data-placeholder="Воронка операционных показателей"><span class="ico">🎯</span>Воронка показателей</a>
 <a class="link" href="https://apisareva22-droid.github.io/alfaprom-dashboard/" target="_blank" rel="noopener"><span class="ico">📊</span>Рейтинг менеджеров</a>
@@ -505,36 +507,270 @@ document.addEventListener('click', () => {
     contactsButton.classList.remove('active');
 });
 
-    // ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ =====
+  // =====================================================
+// ЕЖЕДНЕВНЫЙ ОТЧЁТ
+// =====================================================
 
-const dailyReportButton = document.getElementById('dailyReportButton');
-const reportOverlay = document.getElementById('reportOverlay');
-const reportDropdown = document.getElementById('reportDropdown');
+const dailyReportButton =
+    document.getElementById('dailyReportButton');
 
-// Открытие отчёта
-dailyReportButton.addEventListener('click', (e) => {
+const reportDropdown =
+    document.getElementById('reportDropdown');
+
+
+// -----------------------------------------------------
+// ОТКРЫТИЕ
+// -----------------------------------------------------
+
+dailyReportButton.addEventListener('click', function(e) {
+
     e.preventDefault();
     e.stopPropagation();
 
-    reportOverlay.classList.add('open');
-});
+    /*
+       Если окно уже открыто —
+       закрываем его.
+    */
+    if (reportDropdown.classList.contains('open')) {
 
-// Клик внутри окна не закрывает его
-reportDropdown.addEventListener('click', (e) => {
-    e.stopPropagation();
-});
+        reportDropdown.classList.remove('open');
 
-// Клик вне окна закрывает его
-reportOverlay.addEventListener('click', () => {
-    reportOverlay.classList.remove('open');
-});
-
-// Закрытие по Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        reportOverlay.classList.remove('open');
+        return;
     }
+
+
+    /*
+       Получаем положение кнопки
+       относительно окна браузера.
+    */
+    const buttonRect =
+        dailyReportButton.getBoundingClientRect();
+
+
+    /*
+       Небольшой отступ справа
+       от кнопки.
+    */
+    const gap = 12;
+
+
+    /*
+       Ширина самого окна.
+    */
+    const dropdownWidth = 500;
+
+
+    /*
+       Координата X:
+
+       правая граница кнопки
+       + 12px
+    */
+    let left =
+        buttonRect.right + gap;
+
+
+    /*
+       Координата Y:
+
+       верх окна немного ниже
+       верхней границы кнопки.
+    */
+    let top =
+        buttonRect.top;
+
+
+    /*
+       Проверяем, помещается ли окно
+       справа от кнопки.
+    */
+
+    if (left + dropdownWidth > window.innerWidth - 15) {
+
+        /*
+           Если справа места нет —
+           показываем его слева от кнопки.
+        */
+
+        left =
+            buttonRect.left - dropdownWidth - gap;
+    }
+
+
+    /*
+       Защита от выхода за левую границу.
+    */
+
+    if (left < 15) {
+        left = 15;
+    }
+
+
+    /*
+       Защита от выхода за верхнюю границу.
+    */
+
+    if (top < 15) {
+        top = 15;
+    }
+
+
+    /*
+       Если окно не помещается по высоте,
+       поднимаем его вверх.
+    */
+
+    const dropdownHeight =
+        Math.min(
+            reportDropdown.scrollHeight,
+            window.innerHeight - 30
+        );
+
+
+    if (top + dropdownHeight > window.innerHeight - 15) {
+
+        top =
+            window.innerHeight -
+            dropdownHeight -
+            15;
+    }
+
+
+    /*
+       Применяем координаты.
+    */
+
+    reportDropdown.style.left =
+        left + 'px';
+
+    reportDropdown.style.top =
+        top + 'px';
+
+
+    /*
+       Показываем окно.
+    */
+
+    reportDropdown.classList.add('open');
+
+});
+
+
+// -----------------------------------------------------
+// КЛИК ВНУТРИ ОКНА
+// -----------------------------------------------------
+
+reportDropdown.addEventListener('click', function(e) {
+
+    /*
+       Не даём событию
+       дойти до document.
+    */
+
+    e.stopPropagation();
+
+});
+
+
+// -----------------------------------------------------
+// КЛИК ВНЕ ОКНА
+// -----------------------------------------------------
+
+document.addEventListener('click', function(e) {
+
+    /*
+       Если кликнули не по кнопке
+       и не внутри окна —
+       закрываем.
+    */
+
+    if (
+        !reportDropdown.contains(e.target) &&
+        !dailyReportButton.contains(e.target)
+    ) {
+
+        reportDropdown.classList.remove('open');
+
+    }
+
+});
+
+
+// -----------------------------------------------------
+// ESC
+// -----------------------------------------------------
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.key === 'Escape') {
+
+        reportDropdown.classList.remove('open');
+
+    }
+
 });
 </script>
+<!-- ===== ОКНО ЕЖЕДНЕВНОГО ОТЧЁТА ===== -->
+
+<div class="report-dropdown" id="reportDropdown">
+
+    <div class="report-description">
+        Шаблон отчёта (отправляем каждый день до 17:30
+        в чат в Telegram «АЛЬФАПРОМ ОБЩИЙ NEW»)
+    </div>
+
+    <div class="report-text">
+
+        <div class="report-line report-name">
+            Менеджер: Фамилия Имя
+        </div>
+
+        <div class="report-line report-title">
+            Деньги (Факт/План)
+        </div>
+
+        <div class="report-line">
+            За месяц: ______/120000р
+        </div>
+
+        <div class="report-line">
+            Процент выполнения плана: %
+        </div>
+
+        <div class="report-line">
+            Кол-во целевых заявок: _/2
+        </div>
+
+        <div class="report-line">
+            Кол-во звонков: _/20
+        </div>
+
+        <div class="report-line">
+            Кол-во минут: _/40
+        </div>
+
+        <div class="report-line">
+            КП: _/5
+        </div>
+
+        <div class="report-line">
+            КЭВ: _/3
+        </div>
+
+        <div class="report-line">
+            Счетов за сегодня: _/1
+        </div>
+
+        <div class="report-line">
+            Оплат за сегодня: _/0,5
+        </div>
+
+        <div class="report-line">
+            Маржа за сегодня: _____/23 000р.
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
