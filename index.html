@@ -31,215 +31,77 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 .contacts-button {border: none;cursor: pointer;padding: 9px 12px;border-radius: 10px;font-size: 13px;font-weight: 700;background: #f7f8fa;color: inherit;font-family: inherit;transition: .18s ease;}
 .contacts-button:hover,
 .contacts-button.active {background: #fff0e2;color: #e86f00;}
-/* Выпадающий список */
-.contacts-dropdown {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    width: 430px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    box-shadow: 0 14px 40px rgba(24,31,39,.16);
-    padding: 8px;
-    display: none;
-    z-index: 100;
-}
+.contacts-dropdown {position: absolute;top: calc(100% + 10px);right: 0;width: 430px;background: #fff;border: 1px solid var(--line);border-radius: 16px;box-shadow: 0 14px 40px rgba(24,31,39,.16);padding: 8px;display: none;z-index: 100;}
 .contacts-dropdown.open {display: block;}
-
-/* Один контакт */
-.contact-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 15px 14px;
-    border-radius: 12px;
-    transition: .15s ease;
-}
-.contact-item:hover {
-    background: #f8f9fa;
-}
-.contact-info {
-    min-width: 0;
-}
-.contact-role {
-    color: #8b929a;
-    font-size: 11px;
-    line-height: 1.2;
-    margin-bottom: 4px;
-    text-transform: lowercase;
-}
-.contact-name {
-    color: #20242a;
-    font-size: 16px;
-    line-height: 1.2;
-    font-weight: 700;
-}
-
-/* Иконки */
-.contact-actions {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    flex-shrink: 0;
-}
-.contact-actions a {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    display: grid;
-    place-items: center;
-    background: #f7f8fa;
-    color: #555d66;
-    font-size: 17px;
-    font-weight: 600;
-    transition: .15s ease;
-}
-.contact-actions a:hover {
-    background: #fff0e2;
-    color: #e86f00;
-    transform: translateY(-1px);
-}
-.contact-item + .contact-item {
-    border-top: 1px solid #f0f1f2;
-}
+.contact-item {display: flex;align-items: center;justify-content: space-between;gap: 20px;padding: 15px 14px;border-radius: 12px;transition: .15s ease;}
+.contact-item:hover {background: #f8f9fa;}
+.contact-info {min-width: 0;}
+.contact-role {color: #8b929a;font-size: 11px;line-height: 1.2;margin-bottom: 4px;text-transform: lowercase;}
+.contact-name {color: #20242a;font-size: 16px;line-height: 1.2;font-weight: 700;}
+.contact-actions {display: flex;align-items: center; gap: 7px;flex-shrink: 0;}
+.contact-actions a { width: 34px;height: 34px;border-radius: 9px;display: grid;place-items: center;background: #f7f8fa;color: #555d66;font-size: 17px;font-weight: 600;transition: .15s ease;}
+.contact-actions a:hover {background: #fff0e2;color: #e86f00;transform: translateY(-1px);}
+.contact-item + .contact-item {border-top: 1px solid #f0f1f2;}
 @media(max-width:680px) {
-    .contacts-dropdown {
-        position: fixed;
-        top: 70px;
-        left: 15px;
-        right: 15px;
-        width: auto;
-        max-height: calc(100vh - 90px);
-        overflow-y: auto;
-    }
-
-    .contact-item {
-        padding: 14px 10px;
-    }
-
-    .contact-name {
-        font-size: 15px;
-    }
+.contacts-dropdown {position: fixed;top: 70px;left: 15px;right: 15px;width: auto;max-height: calc(100vh - 90px);overflow-y: auto;}
+.contact-item {padding: 14px 10px;}
+.contact-name {font-size: 15px;}
 }
-
-/* ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ ===== */
-
-.daily-report-wrapper {
-    position: relative;
-}
-
-
-/* Окно отчёта */
-
-.report-dropdown {
-    position: fixed;
-
-    width: 500px;
-    max-width: calc(100vw - 30px);
-
-    max-height: calc(100vh - 30px);
-    overflow-y: auto;
-
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-
-    box-shadow: 0 14px 40px rgba(24,31,39,.16);
-
-    padding: 22px 24px;
-
-    z-index: 1000;
-
-    display: none;
-}
-
-
-/* Открыто */
-
-.report-dropdown.open {
-    display: block;
-}
-
-
-/* Маленькое серое объяснение */
-
-.report-description {
-    color: #8b929a;
-    font-size: 11px;
-    line-height: 1.45;
-    margin-bottom: 20px;
-    max-width: 430px;
-}
-
-
-/* Основной текст */
-
-.report-text {
-    color: #20242a;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-
-/* Строки */
-
-.report-line {
-    margin-bottom: 8px;
-}
-
-
-/* Менеджер */
-
-.report-name {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 18px;
-}
-
-
-/* Деньги */
-
-.report-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 7px;
-}
-
-
-/* Последняя строка */
-
-.report-line:last-child {
-    margin-bottom: 0;
-}
-
-
-/* Телефон */
-
+.daily-report-wrapper {position: relative;}
+.report-dropdown {position: fixed;width: 500px;max-width: calc(100vw - 30px);max-height: calc(100vh - 30px);overflow-y: auto;background: #fff;border: 1px solid var(--line);border-radius: 16px;box-shadow: 0 14px 40px rgba(24,31,39,.16);padding: 22px 24px;z-index: 1000;display: none;}
+.report-dropdown.open {display: block;}
+.report-description {color: #8b929a;font-size: 11px;line-height: 1.45;margin-bottom: 20px;max-width: 430px;}
+.report-text {color: #20242a;font-size: 15px;line-height: 1.5;}
+.report-line {margin-bottom: 8px;}
+.report-name {font-size: 18px;font-weight: 700;margin-bottom: 18px;}
+.report-title {font-size: 16px;font-weight: 700;margin-bottom: 7px;}
+.report-line:last-child {margin-bottom: 0;}
 @media(max-width:680px) {
-
     .report-dropdown {
         width: auto;
         max-width: calc(100vw - 30px);
-
         max-height: calc(100vh - 30px);
-
         padding: 20px;
-
         border-radius: 15px;
     }
-
-    .report-description {
-        font-size: 11px;
+    .report-description {font-size: 11px;}
+    .report-text {font-size: 14px;}
+    .report-name {font-size: 17px;}
+}
+.metrics-funnel-wrapper {position: relative;}
+.metrics-funnel-dropdown {
+    position: fixed;
+    width: 520px;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - 30px);
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(24,31,39,.16);
+    padding: 22px 24px;
+    z-index: 1000;
+    display: none;
+}
+.metrics-funnel-dropdown.open {display: block;}
+.metrics-funnel-description {color: #8b929a;font-size: 11px;line-height: 1.45;margin-bottom: 20px;}
+.metrics-funnel-text {color: #20242a;font-size: 14px;line-height: 1.55;}
+.metrics-line {margin-bottom: 10px;}
+.metrics-line strong {font-weight: 700;}
+.metrics-period {color: #8b929a;font-size: 11px;font-weight: 400; white-space: nowrap;}
+.metrics-line:last-child {margin-bottom: 0;}
+@media(max-width:680px) {
+    .metrics-funnel-dropdown {
+        width: auto;
+        max-width: calc(100vw - 30px);
+        max-height: calc(100vh - 30px);
+        padding: 20px;
+        border-radius: 15px;
     }
-
-    .report-text {
-        font-size: 14px;
-    }
-
-    .report-name {
-        font-size: 17px;
+    .metrics-funnel-text {font-size: 13px;}
+    .metrics-period {
+        display: block;
+        margin-top: 2px;
     }
 }
 </style>
@@ -253,83 +115,65 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
     <button class="contacts-button" id="contactsButton">
         ☎ Контакты
     </button>
-
     <div class="contacts-dropdown" id="contactsDropdown">
-
-        <!-- 1. Директор -->
         <div class="contact-item">
             <div class="contact-info">
                 <div class="contact-role">директор</div>
                 <div class="contact-name">Иван Владимирович</div>
             </div>
-
             <div class="contact-actions">
                 <a href="tel:+79270177722" title="Позвонить">☎</a>
                 <a href="https://t.me/KnyazzOfficial" target="_blank" rel="noopener" title="Telegram">✈</a>
                 <a href="https://wa.me/79270177722" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
-
-        <!-- 2. Бизнес-ассистент директора -->
         <div class="contact-item">
             <div class="contact-info">
                 <div class="contact-role">бизнес ассистент директора</div>
                 <div class="contact-name">Анна Михайловна</div>
             </div>
-
             <div class="contact-actions">
                 <a href="tel:+79297050018" title="Позвонить">☎</a>
                 <a href="https://t.me/Tipo_Ann" target="_blank" rel="noopener" title="Telegram">✈</a>
                 <a href="https://wa.me/79297050018" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
-
-        <!-- 3. Маркетолог -->
         <div class="contact-item">
             <div class="contact-info">
                 <div class="contact-role">маркетолог</div>
                 <div class="contact-name">Светлана Михайловна</div>
             </div>
-
             <div class="contact-actions">
                 <a href="tel:+79277283862" title="Позвонить">☎</a>
                 <a href="https://t.me/SKnyazevaa" target="_blank" rel="noopener" title="Telegram">✈</a>
                 <a href="https://wa.me/79277283862" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
-
-        <!-- 4. Логист -->
         <div class="contact-item">
             <div class="contact-info">
                 <div class="contact-role">логист</div>
                 <div class="contact-name">Ирина Викторовна</div>
             </div>
-
             <div class="contact-actions">
                 <a href="tel:+79277685948" title="Позвонить">☎</a>
                 <a href="https://t.me/zabota_alfaprom" target="_blank" rel="noopener" title="Telegram">✈</a>
                 <a href="https://wa.me/79277685948" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
-
-        <!-- 5. Бухгалтер -->
         <div class="contact-item">
             <div class="contact-info">
                 <div class="contact-role">бухгалтер</div>
                 <div class="contact-name">Галина Михайловна</div>
             </div>
-
             <div class="contact-actions">
                 <a href="tel:+79276024402" title="Позвонить">☎</a>
                 <a href="https://t.me/GalinaHinoverova" target="_blank" rel="noopener" title="Telegram">✈</a>
                 <a href="https://wa.me/79276024402" target="_blank" rel="noopener" title="WhatsApp">◉</a>
             </div>
         </div>
-
     </div>
 </div>
 </div></header>
-
 <main>
 <div class="hero"><h1>Рабочий стол менеджера</h1><p>Всё необходимое для работы с киентом — оборудование, КП, сервис, отгрузка и материалы.</p></div>
 
@@ -376,75 +220,107 @@ main{max-width:1280px;margin:auto;padding:34px 24px 56px}.hero{margin-bottom:30p
 <section class="section grid">
 <div class="card panel searchable" data-search="показатели план факт отчет воронка заявки звонки минуты КП КЭВ счета оплаты маржа"><h3>📊 Мои показатели</h3><div class="links">
 <div class="daily-report-wrapper">
-
     <a class="link" href="#" id="dailyReportButton">
         <span class="ico">📝</span>Ежедневный отчёт (шаблон)
     </a>
-
     <div class="report-dropdown" id="reportDropdown">
-
         <div class="report-description">
             Шаблон отчёта (отправляем каждый день до 17:30
             в чат в Telegram «АЛЬФАПРОМ ОБЩИЙ NEW»)
         </div>
-
         <div class="report-text">
-
             <div class="report-line report-name">
                 Менеджер: Фамилия Имя
             </div>
-
             <div class="report-line report-title">
                 Деньги (Факт/План)
             </div>
-
             <div class="report-line">
                 За месяц: ______/120000р
             </div>
-
             <div class="report-line">
                 Процент выполнения плана: %
             </div>
-
             <div class="report-line">
                 Кол-во целевых заявок: _/2
             </div>
-
             <div class="report-line">
                 Кол-во звонков: _/20
             </div>
-
             <div class="report-line">
                 Кол-во минут: _/40
             </div>
-
             <div class="report-line">
                 КП: _/5
             </div>
-
             <div class="report-line">
                 КЭВ: _/3
             </div>
-
             <div class="report-line">
                 Счетов за сегодня: _/1
             </div>
-
             <div class="report-line">
                 Оплат за сегодня: _/0,5
             </div>
-
             <div class="report-line">
                 Маржа за сегодня: _____/23 000р.
             </div>
-
         </div>
-
     </div>
-
 </div>
 <a class="link" href="#" data-placeholder="План / факт"><span class="ico">📈</span>План / факт</a>
-<a class="link" href="#" data-placeholder="Воронка операционных показателей"><span class="ico">🎯</span>Воронка показателей</a>
+<div class="metrics-funnel-wrapper">
+    <a class="link" href="#" id="metricsFunnelButton">
+        <span class="ico">🎯</span>Воронка показателей
+    </a>
+    <div class="metrics-funnel-dropdown" id="metricsFunnelDropdown">
+        <div class="metrics-funnel-description">
+            Плановые показатели менеджера
+        </div>
+        <div class="metrics-funnel-text">
+            <div class="metrics-line">
+                Маржа:
+                <strong>23 000 р./115 000 р./529 000 р.</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                Кол-во целевых заявок:
+                <strong>2/10/46</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                Кол-во звонков:
+                <strong>20/100/460</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                Кол-во минут:
+                <strong>40/200/920</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                КП:
+                <strong>5/25/115</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                КЭВы:
+                <strong>3/15/69</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                Счета:
+                <strong>1/5/23</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+            <div class="metrics-line">
+                Оплаты:
+                <strong>0,5/2,5/11,5</strong>
+                <span class="metrics-period">(день/неделя/месяц)</span>
+            </div>
+        </div>
+    </div>
+</div>
 <a class="link" href="https://apisareva22-droid.github.io/alfaprom-dashboard/" target="_blank" rel="noopener"><span class="ico">📊</span>Рейтинг менеджеров</a>
 </div></div>
 <div class="card panel searchable" data-search="обучение стажировка книги материалы развитие"><h3>📚 Обучение и база</h3><div class="links">
@@ -523,140 +399,135 @@ document.querySelectorAll('[data-placeholder]').forEach(el=>el.addEventListener(
 
 const contactsButton = document.getElementById('contactsButton');
 const contactsDropdown = document.getElementById('contactsDropdown');
-
 contactsButton.addEventListener('click', (e) => {
     e.stopPropagation();
-
     contactsDropdown.classList.toggle('open');
     contactsButton.classList.toggle('active');
 });
-
 contactsDropdown.addEventListener('click', (e) => {
     e.stopPropagation();
 });
-
 document.addEventListener('click', () => {
     contactsDropdown.classList.remove('open');
     contactsButton.classList.remove('active');
 });
-
- // ===== ЕЖЕДНЕВНЫЙ ОТЧЁТ =====
-
 const dailyReportButton = document.getElementById('dailyReportButton');
 const reportDropdown = document.getElementById('reportDropdown');
-
-
-// Открытие отчёта
-
 dailyReportButton.addEventListener('click', function(e) {
-
     e.preventDefault();
     e.stopPropagation();
-
-    // Если уже открыт — закрываем
     if (reportDropdown.classList.contains('open')) {
         reportDropdown.classList.remove('open');
         return;
     }
-
-
-    // Получаем положение кнопки
     const buttonRect = dailyReportButton.getBoundingClientRect();
-
-
-    // Отступ между кнопкой и окном
     const gap = 12;
-
-
-    // Ширина окна
     const dropdownWidth = 500;
-
-
-    // Пытаемся поставить справа от кнопки
     let left = buttonRect.right + gap;
     let top = buttonRect.top;
-
-
-    // Если справа не помещается —
-    // ставим слева от кнопки
     if (left + dropdownWidth > window.innerWidth - 15) {
-
         left = buttonRect.left - dropdownWidth - gap;
-
     }
-
-
-    // Защита от выхода за левый край
     if (left < 15) {
         left = 15;
     }
-
-
-    // Защита от выхода за верхний край
     if (top < 15) {
         top = 15;
     }
-
-
-    // Сначала показываем окно
     reportDropdown.classList.add('open');
-
-
-    // После появления определяем его реальную высоту
     const dropdownHeight = reportDropdown.offsetHeight;
-
-
-    // Если снизу не помещается —
-    // поднимаем окно
     if (top + dropdownHeight > window.innerHeight - 15) {
-
         top = window.innerHeight - dropdownHeight - 15;
-
     }
-
-
-    // Устанавливаем позицию
     reportDropdown.style.left = left + 'px';
     reportDropdown.style.top = top + 'px';
-
 });
-
-
-// Клик внутри окна
-
 reportDropdown.addEventListener('click', function(e) {
-
     e.stopPropagation();
-
 });
-
-
-// Клик вне окна
-
 document.addEventListener('click', function(e) {
-
     if (
         !reportDropdown.contains(e.target) &&
         !dailyReportButton.contains(e.target)
     ) {
-
         reportDropdown.classList.remove('open');
-
     }
-
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        reportDropdown.classList.remove('open');
+    }
 });
 
-
-// ESC
-
-document.addEventListener('keydown', function(e) {
-
-    if (e.key === 'Escape') {
-
-        reportDropdown.classList.remove('open');
-
+const metricsFunnelButton =
+    document.getElementById('metricsFunnelButton');
+const metricsFunnelDropdown =
+    document.getElementById('metricsFunnelDropdown');
+metricsFunnelButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (metricsFunnelDropdown.classList.contains('open')) {
+        metricsFunnelDropdown.classList.remove('open');
+        return;
     }
-
+    const buttonRect =
+        metricsFunnelButton.getBoundingClientRect();
+    const gap = 12;
+    const dropdownWidth = 520;
+    let left =
+        buttonRect.right + gap;
+    let top =
+        buttonRect.top;    
+    if (
+        left + dropdownWidth >
+        window.innerWidth - 15
+    ) {
+        left =
+            buttonRect.left -
+            dropdownWidth -
+            gap;
+    }
+    if (left < 15) {
+        left = 15;
+    }
+    if (top < 15) {
+        top = 15;
+    }
+     metricsFunnelDropdown.classList.add('open');
+      const dropdownHeight =
+        metricsFunnelDropdown.offsetHeight;
+    if (
+        top + dropdownHeight >
+        window.innerHeight - 15
+    ) {
+        top =
+            window.innerHeight -
+            dropdownHeight -
+            15;
+    }
+    metricsFunnelDropdown.style.left =
+        left + 'px';
+    metricsFunnelDropdown.style.top =
+        top + 'px';
+});
+metricsFunnelDropdown.addEventListener(
+    'click',
+    function(e) {
+        e.stopPropagation();
+    }
+);
+document.addEventListener('click', function(e) {
+    if (
+        !metricsFunnelDropdown.contains(e.target) &&
+        !metricsFunnelButton.contains(e.target)
+    ) {
+        metricsFunnelDropdown.classList.remove('open');
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        metricsFunnelDropdown.classList.remove('open');
+    }
 });
 </script>
 </body>
